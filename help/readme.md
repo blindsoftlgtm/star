@@ -8,7 +8,7 @@ This is a set of components intended to ease the creation of audio productions t
 This setup involves 3 components:
 
 ### User client
-The frontend to this application involves the user client. This application is responsible for requesting synthesis and outputting the results. Separate [user client documentation](user/readme.md) is provided which also explains the script syntax.
+The frontend to this application involves the user client. This application is responsible for requesting synthesis and outputting the results. Separate [user client documentation](../user/readme.md) is provided which also explains the script syntax.
 
 ### Speech Providers
 The task of these components is to translate text to speech depending on the voices available on a given system. A provider can run anywhere TTS voices are available, and some providers might be platform-agnostic as they might synthesize tts from cloud providers like Google or Amazon.
@@ -35,6 +35,11 @@ If you want to create a complete local stack in one shell window, at least on wi
 If you wish to build the binaries, you can run `/.build.bat` on windows or `pyinstaller --noconfirm STAR.spec` on other platforms from the repository's root directory after generating the readme.html file by running python user/html_readme.py.
 
 You only need to set up a virtual environment the first time you clone the repository, after which you only need to activate it every time you open a terminal window up to the root of the repository.
+
+### Restarting providers
+
+Optional Windows and Linux tools for restarting every configured STAR provider
+are documented in [the miscellaneous tools guide](../misc/readme.md).
 
 ## API
 You can skip this section unless you wish to contribute to the project, want to know how it works, or intend to write new providers or clients.

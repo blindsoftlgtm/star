@@ -1,0 +1,2 @@
+hosts = wss://star.blindsoft.net
+concurrent_requests = 1

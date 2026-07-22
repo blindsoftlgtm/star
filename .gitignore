@@ -3,6 +3,7 @@ build
 dist
 provider/*/*.dll
 provider/*/*.exe
+provider/*/provider*.log
 user/output
 user/readme.html
 venv
