@@ -4,20 +4,17 @@ set -u
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 STAR_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 PROVIDER_ROOT="$STAR_ROOT/provider"
-SERVER="wss://star.blindsoft.net"
 PYTHON_COMMAND="${PYTHON_COMMAND:-python3}"
 
 declare -A PROVIDERS=()
 
-echo "Finding STAR providers configured for $SERVER..."
+echo "Finding configured STAR providers..."
 echo
 
 while IFS= read -r -d '' config; do
-	if grep -Fq -- "$SERVER" "$config"; then
-		script="${config%.ini}.py"
-		if [[ -f "$script" ]]; then
-			PROVIDERS["$script"]=1
-		fi
+	script="${config%.ini}.py"
+	if [[ -f "$script" ]]; then
+		PROVIDERS["$script"]=1
 	fi
 done < <(find "$PROVIDER_ROOT" -type f -name '*.ini' -print0)
 

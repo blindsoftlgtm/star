@@ -13,8 +13,9 @@ Pocket TTS data directory.
 3. Install STAR's normal requirements from the repository root.
 4. Open the `provider\pocket_tts` directory and install this provider's extra
    requirements with `python -m pip install -r requirements.txt`.
-5. In that directory, copy `pocket_tts.ini.example` to `pocket_tts.ini` and edit
-   the websocket host if necessary.
+5. In that directory, copy `pocket_tts.ini.example` to `pocket_tts.ini`. The
+   example uses the local STAR server at `ws://localhost:7774`; replace it with
+   another server only when you intentionally want to connect there.
 6. Run `python pocket_tts.py` from the `provider\pocket_tts` directory.
 
 The provider discovers voices each time it starts. Restart it after adding a new

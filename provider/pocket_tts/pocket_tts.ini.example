@@ -1,2 +1,2 @@
-hosts = wss://star.blindsoft.net
+hosts = ws://localhost:7774
 concurrent_requests = 1

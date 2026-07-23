@@ -2,21 +2,19 @@ $ErrorActionPreference = "Stop"
 
 $starRoot = Split-Path -Parent $PSScriptRoot
 $providerRoot = Join-Path $starRoot "provider"
-$server = "wss://star.blindsoft.net"
 $python = (Get-Command python.exe -ErrorAction Stop).Source
 $providerScripts = @{}
 
-Write-Host "Finding STAR providers configured for $server..."
+Write-Host "Finding configured STAR providers..."
 Write-Host ""
 
-# Discover providers whose configuration names match their Python entry points.
+# Discover every configured provider whose configuration name matches its
+# Python entry point. The server addresses already stored in each .ini file are
+# left unchanged.
 Get-ChildItem -Path $providerRoot -Filter "*.ini" -File -Recurse | ForEach-Object {
-	$configText = Get-Content -LiteralPath $_.FullName -Raw -ErrorAction SilentlyContinue
-	if ($configText -match [regex]::Escape($server)) {
-		$scriptPath = Join-Path $_.DirectoryName ($_.BaseName + ".py")
-		if (Test-Path -LiteralPath $scriptPath -PathType Leaf) {
-			$providerScripts[$scriptPath.ToLowerInvariant()] = $scriptPath
-		}
+	$scriptPath = Join-Path $_.DirectoryName ($_.BaseName + ".py")
+	if (Test-Path -LiteralPath $scriptPath -PathType Leaf) {
+		$providerScripts[$scriptPath.ToLowerInvariant()] = $scriptPath
 	}
 }
 

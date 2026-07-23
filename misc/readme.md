@@ -4,9 +4,11 @@ This folder contains optional utilities that are useful when running STAR.
 
 ## Restart all providers
 
-The restart tools discover providers configured for `wss://star.blindsoft.net`.
+The restart tools discover every provider with an existing `.ini` configuration.
 They also attempt to retain providers already running from the same STAR checkout.
-Each provider should normally use matching filenames, such as `example.py` and
+Each provider reconnects to the server addresses already saved in its own
+configuration; the tools never add or assume a public server address. Each
+provider should normally use matching filenames, such as `example.py` and
 `example.ini`.
 
 ### Windows
